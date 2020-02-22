@@ -12,9 +12,11 @@ class App extends Component {
     super(props);
     this.state = {
       step: 0,
-      realStep: 1,
+      realStep: 3,
       data:[]
-    }
+    };
+    this.getScreen = this.getScreen.bind(this);
+    this.screenHandler = this.screenHandler.bind(this);
   }
 
 
