@@ -1,0 +1,13 @@
+.start_screen {
+}
+
+.start_screen_content {
+    background-image: url("./../../assets/img/women_in_plane.svg");
+    background-position: right;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.start_screen_content > div {
+    max-width: 60%;
+}
