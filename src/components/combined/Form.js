@@ -69,7 +69,7 @@ class Form extends Component {
                         <div key={id} className={"company_position " + (isSelected ? "company_selected" : "")}
                              onClick={(e) => {
                                  this.onChoose(id, company);
-                                 e.preventDefault();
+                                 e.stopPropagation();
                              }}>
                             <div>
                                 {company}
