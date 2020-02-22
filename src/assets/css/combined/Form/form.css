@@ -2,6 +2,12 @@
     display: flex;
     justify-content: space-between;
     color: rgba(0, 0, 0, 0.4);
+    padding: 5px 20px;
+    margin: 5px;
+}
+
+.company_position:hover{
+    color: black;
 }
 
 .company_form {
@@ -17,7 +23,10 @@
 }
 
 .company_selected{
-    border: 1px solid black;
+    border-radius: 20px;
+    border-color: rgba(0,0,0,0.2);
+    border-style: solid;
+    color: black;
 }
 
 .company_star:hover{
