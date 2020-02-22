@@ -14,8 +14,9 @@ class Stars extends Component {
             stars.push(
                 <Star key={i}
                       className={"company_star"}
-                      onClick={() => {
-                          this.handler(i)
+                      onClick={(e) => {
+                          this.handler(i);
+                          e.stopPropagation();
                       }}
                       isActive={vote && i <= vote}/>
             );
