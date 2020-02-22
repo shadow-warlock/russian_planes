@@ -7,8 +7,8 @@ class Form extends Component {
     constructor(props) {
         super(props);
         let selected = {};
-        if(this.props.selected){
-            for (let key in this.props.selected){
+        if (this.props.selected) {
+            for (let key in this.props.selected) {
                 selected[key] = this.props.selected[key];
                 selected[key].vote = null;
             }
@@ -20,8 +20,8 @@ class Form extends Component {
         this.onVoted = this.onVoted.bind(this);
     }
 
-    onChoose(id, name){
-        if(!this.props.selected){
+    onChoose(id, name) {
+        if (!this.props.selected) {
             let selected = this.state.selected;
             if (selected[id]) {
                 delete selected[id];
@@ -66,10 +66,12 @@ class Form extends Component {
                         }}/>
                     }
                     return (
-                        <div key={id} className={"company_position " + (isSelected ? "company_selected" : "")}>
-                            <div onClick={() => {
-                                this.onChoose(id, company)
-                            }}>
+                        <div key={id} className={"company_position " + (isSelected ? "company_selected" : "")}
+                             onClick={(e) => {
+                                 this.onChoose(id, company);
+                                 e.preventDefault();
+                             }}>
+                            <div>
                                 {company}
                             </div>
                             <div>{stars}</div>

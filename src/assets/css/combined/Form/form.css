@@ -8,6 +8,7 @@
 
 .company_position:hover{
     color: black;
+    cursor: pointer;
 }
 
 .company_form {
