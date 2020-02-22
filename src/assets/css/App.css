@@ -1,3 +1,5 @@
+@import "https://fonts.googleapis.com/css?family=Open+Sans&display=swap";
+
 .default_padding {
     padding: 50px 70px;
 }
@@ -5,7 +7,7 @@
 body {
     margin: 0;
     font-size: 25px;
-    font-family: "Google Sans", serif;
+    font-family: "Open Sans", serif;
 }
 
 .header {
@@ -25,8 +27,16 @@ body {
     background-color: #ffc107;
 }
 
+.bg_white{
+    background-color: white;
+}
+
 .display_flex {
     display: flex;
+}
+
+.justify_content_between{
+    justify-content: space-between;
 }
 
 .little_text{
@@ -35,4 +45,8 @@ body {
 
 .margin_bottom_4{
     margin-bottom: 4rem;
+}
+
+.text_center{
+    text-align: center;
 }

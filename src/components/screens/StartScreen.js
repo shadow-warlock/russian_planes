@@ -9,7 +9,7 @@ class StartScreen extends Component {
     render() {
         return (
             <div className={"start_screen default_padding"}>
-                <div>
+                <div className={"margin_bottom_4"}>
                     <img src={logoImage} alt={"logo"}/>
                 </div>
                 <div className={"start_screen_content"}>

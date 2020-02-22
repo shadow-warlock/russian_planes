@@ -1,12 +1,9 @@
 .start_screen {
-    background-image: url("../../../img/screens/StartScreen/left_top_cloud.svg");
-}
-
-.start_screen_content {
     background-image: url("../../../img/screens/StartScreen/women_in_plane.svg");
-    background-position: right;
-    background-size: contain;
+    background-size: 50%;
     background-repeat: no-repeat;
+    background-position-x: right;
+    background-position-y: center;
 }
 
 .start_screen_content > div {
@@ -17,14 +14,14 @@
     padding: 20px;
 }
 
-.stars:hover{
-    filter: brightness(110%);
+.stars:hover {
+    filter: brightness(95%);
 }
 
 .stars > svg {
     margin: 5px;
 }
 
-.start_screen .button{
+.start_screen .button {
     text-align: left;
 }

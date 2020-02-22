@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 161 31" width="161" height="31">
+	<defs>
+		<image width="161" height="31" id="img1" href="data:undefined;base64,R0lGODlhoQAfAKIAAPmmJ/3hvf/s2PvDefSKAP///wAAAAAAACH5BAAAAAAALAAAAAChAB8AAAP/WLrc/jDKSau9OOvNu/9gKI5kaZ5oqq5s675wLM90bd94ru987//An2BADCgCxKRyyWwaC02lcch8IpuCa1QQ5BC+X8UAQC6bz2j0QAFutwcBdxtQkM/t4GcXM3DrSXF4X31gZW2Bgol7GYiEawUCaWtjjwUBZAGXZ5NffwUAX6AElQqihH+iTwKhixurXwKvBGJ4jrSdhaKjolwMhbANYKe+YUeDrRqmbJ2fBHQKr8O6BFfEhLMMr7oN2qJnrLeeyBPXScJ1eIGXoc7XfuALgd4Nge5yeqLjF4h40Ummc9ARAvAP16gGjvJkygQw1Jk/YPRVkMVE2CBz7I4JHLQwV9QwBqkSEWQWQZtECsoaTLODyIpBOWOAEZtlr1AzAr0g1Ds5YeGDLAuDZuIydAFQSEGBAhV3FKnQXk1LFuVJtarVq1izat3KtavXr2DDih1LtqzZsyoSAAA7"/>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+	</style>
+	<use id="b5a034d6a7050c5843b3c14e6449474d" href="#img1" transform="matrix(1,0,0,1,0,0)"/>
+</svg>

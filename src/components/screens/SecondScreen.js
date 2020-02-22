@@ -1,9 +1,17 @@
 import React, {Component} from "react";
+import Button from "../base/Button";
+import "./../../assets/css/screens/SecondScreen/second_screen.css";
 
 class SecondScreen extends Component {
     render() {
         return (
-            <div>123</div>
+            <div className={"bg_yellow default_padding second_screen"}>
+                <div className={"header margin_bottom_4"}> Номинация «Российская авиакомпания года <br/> — лидер пассажирских симпатий»</div>
+                <div className={"text_center margin_bottom_4"}>Выберите и оцените 3 авиакомпании</div>
+                <div className={"text_center"}>
+                    <Button className={"bg_white margin_bottom_4"}>Голосовать</Button>
+                </div>
+            </div>
         );
     }
 }

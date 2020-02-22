@@ -1,0 +1,22 @@
+.footer img {
+    height: 50px;
+}
+
+
+.information_partners {
+    width: 80%;
+    margin: 20px 100px;
+    flex-wrap: wrap;
+}
+
+.information_partners > div {
+    width: 250px;
+}
+
+.founders img{
+    margin: 20px 20px;
+}
+
+.gen_info_center img{
+    margin: 20px 20px;
+}
