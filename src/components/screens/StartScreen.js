@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import logoImage from "./../../assets/img/logo.svg"
-import "./../../assets/css/start_screen.css"
+import "../../assets/css/StartScreen/start_screen.css"
 
 class StartScreen extends Component {
     render() {
