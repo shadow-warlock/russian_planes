@@ -1,6 +1,8 @@
 import React, {Component} from "react";
-import logoImage from "./../../assets/img/logo.svg"
-import "../../assets/css/StartScreen/start_screen.css"
+import logoImage from "../../assets/img/screens/StartScreen/logo.svg"
+import "../../assets/css/screens/StartScreen/start_screen.css"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faStar} from "@fortawesome/free-solid-svg-icons";
 
 class StartScreen extends Component {
     render() {
@@ -13,8 +15,13 @@ class StartScreen extends Component {
                     <div>
                         <div>в рамках 23-й <br/> национальной авиационной премии «Крылья России</div>
                         <div className={"blue header"}>Народное голосование. Выбираем лучшую авиакомпанию 2019</div>
-                        <div>
-                            <div>ЗВЕЗДЫ</div>
+                        <div className={"display_flex"}>
+                            <div>
+                                <FontAwesomeIcon icon={faStar}/>
+                                <FontAwesomeIcon icon={faStar}/>
+                                <FontAwesomeIcon icon={faStar}/>
+                                <FontAwesomeIcon icon={faStar}/>
+                            </div>
                             <button>Проголосуй и выиграй приз*</button>
                         </div>
                     </div>

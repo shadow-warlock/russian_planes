@@ -3,6 +3,7 @@
 }
 
 body {
+    margin: 0;
     font-size: 25px;
     font-family: "Google Sans", serif;
 }
@@ -14,4 +15,12 @@ body {
 
 .blue {
     color: rgb(38, 73, 145);
+}
+
+.yellow{
+    color: #ffc107;
+}
+
+.display_flex{
+    display: flex;
 }

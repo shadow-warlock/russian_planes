@@ -1,8 +1,9 @@
 .start_screen {
+    background-image: url("../../../img/screens/StartScreen/left_top_cloud.svg");
 }
 
 .start_screen_content {
-    background-image: url("../../img/women_in_plane.svg");
+    background-image: url("../../../img/screens/StartScreen/women_in_plane.svg");
     background-position: right;
     background-size: contain;
     background-repeat: no-repeat;
