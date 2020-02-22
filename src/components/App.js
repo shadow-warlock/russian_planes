@@ -1,11 +1,15 @@
 import React, {Component} from 'react';
-import './../assets/css/App.css';
+import '../assets/css/App/App.css';
 import StartScreen from "./screens/StartScreen";
-import Stepper from "./combined/Stepper";
 import SecondScreen from "./screens/SecondScreen";
 import Footer from "./combined/Footer";
+import Form from "./combined/Form";
+import companies from "./../assets/json/ru_companies";
+import Stepper from "./combined/Stepper";
 
 export const ALL_STEPS = 8;
+export const LIKING_LEADER_RU = "liking leader ru";
+export const TRAFFIC_QUALITY_RU = "tariff quality ru";
 
 class App extends Component {
 
@@ -13,38 +17,56 @@ class App extends Component {
         super(props);
         this.state = {
             step: 0,
-            realStep: 3,
-            data: []
-        };
-        this.getScreen = this.getScreen.bind(this);
-        this.screenHandler = this.screenHandler.bind(this);
-    }
+            data:{}
+    };
+    this.getScreen = this.getScreen.bind(this);
+    this.screenHandler = this.screenHandler.bind(this);
+    this.getRealStep = this.getRealStep.bind(this);
+  }
 
 
-    getScreen() {
-        let screens = [
-            <StartScreen handler={this.screenHandler} step={this.state.realStep}/>,
-            <SecondScreen handler={this.screenHandler} step={this.state.realStep}/>,
-            <Stepper step={this.state.realStep}/>
-        ];
-        return screens[this.state.step]
-    }
+  getScreen(){
+    let screens = [
+        <StartScreen handler={this.screenHandler} step={this.getRealStep()}/>,
+        <StartScreen handler={this.screenHandler} step={this.getRealStep()}/>,
+        // <SecondScreen handler={this.screenHandler} step={this.getRealStep()}/>,
+        <Form
+            key={LIKING_LEADER_RU}
+            name={LIKING_LEADER_RU}
+            handler={this.screenHandler}
+            companies={companies}/>,
+        <Form key={TRAFFIC_QUALITY_RU}
+              name={TRAFFIC_QUALITY_RU}
+              companies={companies}
+              fixed={true}
+              handler={this.screenHandler}
+              selected={this.state.data[LIKING_LEADER_RU]}/>
+    ];
+    return screens[this.state.step]
+  }
 
-    screenHandler(data = null, increaseStep = false) {
-        if (data) {
-            this.setState({
-                data: this.state.data.push(data)
-            })
-        }
-        if (increaseStep) {
-            this.setState({
-                realStep: this.state.realStep + 1
-            })
-        }
-        this.setState({
-            step: this.state.step + 1
-        })
+  screenHandler(name=null, datum=null){
+    let step = this.state.step;
+    let data = this.state.data;
+    if(name && datum){
+      data[name] = datum
     }
+    step++;
+    this.setState({
+      step: step,
+      data: data
+    })
+  }
+
+  getRealStep(){
+    let step = this.state.step;
+    if(step < 2)
+      return 1;
+    if(step >= 2 && step <= 5)
+      return step-1;
+    else
+      return step-2;
+  }
 
     render() {
         return (
