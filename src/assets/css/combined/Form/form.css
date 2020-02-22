@@ -1,0 +1,25 @@
+.company_position {
+    display: flex;
+    justify-content: space-between;
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.company_form {
+    max-width: 80%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.company_form .company_position {
+    width: 45%;
+}
+
+.company_selected{
+    border: 1px solid black;
+}
+
+.company_star:hover{
+    color: #ffc107;
+}

@@ -1,24 +1,30 @@
 import React, {Component, Fragment} from "react";
-import Button from "../base/Button";
 import Star from "../base/Star";
 
 class Stars extends Component {
 
-    handler(data){
+    handler(data) {
         this.props.onVoted(data)
     }
 
     render() {
         let stars = [];
         let vote = this.props.company.vote;
-        for(let i=1; i<=5; i++){
-            stars.push(<Star key={i} onClick={()=>{this.handler(i)}} isActive={vote && i <= vote}/>);
+        for (let i = 1; i <= 5; i++) {
+            stars.push(
+                <div className={"company_star"}>
+                    <Star key={i}
+                          onClick={() => {
+                              this.handler(i)
+                          }}
+                          isActive={vote && i <= vote}/>
+                </div>
+            );
         }
         return (
-            <Fragment>
+            <div className={"display_flex"}>
                 {stars}
-            </Fragment>
-
+            </div>
         );
     }
 }

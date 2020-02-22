@@ -5,7 +5,6 @@ import SecondScreen from "./screens/SecondScreen";
 import Footer from "./combined/Footer";
 import Form from "./combined/Form";
 import companies from "./../assets/json/ru_companies";
-import Stepper from "./combined/Stepper";
 
 export const ALL_STEPS = 8;
 export const LIKING_LEADER_RU = "liking leader ru";
@@ -16,7 +15,7 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            step: 0,
+            step: 2,
             data:{}
     };
     this.getScreen = this.getScreen.bind(this);
