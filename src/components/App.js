@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './../assets/css/App.css';
 import StartScreen from "./screens/StartScreen";
 import Stepper from "./combined/Stepper";
+import SecondScreen from "./screens/SecondScreen";
 
 export const ALL_STEPS = 8;
 
@@ -20,6 +21,7 @@ class App extends Component {
   getScreen(){
     let screens = [
         <StartScreen handler={this.screenHandler} step={this.state.realStep}/>,
+        <SecondScreen handler={this.screenHandler} step={this.state.realStep}/>,
         <Stepper step={this.state.realStep}/>
     ];
     return screens[this.state.step]

@@ -12,3 +12,19 @@
 .start_screen_content > div {
     max-width: 60%;
 }
+
+.stars {
+    padding: 20px;
+}
+
+.stars:hover{
+    filter: brightness(110%);
+}
+
+.stars > svg {
+    margin: 5px;
+}
+
+.start_screen .button{
+    text-align: left;
+}

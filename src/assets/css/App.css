@@ -1,5 +1,5 @@
 .default_padding {
-    padding: 50px;
+    padding: 50px 70px;
 }
 
 body {
@@ -17,10 +17,22 @@ body {
     color: rgb(38, 73, 145);
 }
 
-.yellow{
+.yellow {
     color: #ffc107;
 }
 
-.display_flex{
+.bg_yellow{
+    background-color: #ffc107;
+}
+
+.display_flex {
     display: flex;
+}
+
+.little_text{
+    font-size: 12px;
+}
+
+.margin_bottom_4{
+    margin-bottom: 4rem;
 }

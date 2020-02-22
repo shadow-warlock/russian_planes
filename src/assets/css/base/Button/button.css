@@ -1,0 +1,11 @@
+.button{
+    border: none;
+    border-radius: 5px;
+    padding: 25px;
+    cursor: pointer;
+    font-size: inherit;
+}
+
+.button:hover{
+    filter: brightness(110%);
+}
