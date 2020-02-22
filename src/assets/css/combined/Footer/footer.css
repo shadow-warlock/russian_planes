@@ -2,6 +2,10 @@
     height: 50px;
 }
 
+.footer {
+    color: rgba(65, 60, 52, 0.4);
+    font-weight: bold;
+}
 
 .information_partners {
     width: 80%;
@@ -10,13 +14,13 @@
 }
 
 .information_partners > div {
-    width: 250px;
+    width: 200px;
 }
 
-.founders img{
+.founders img {
     margin: 20px 20px;
 }
 
-.gen_info_center img{
+.gen_info_center img {
     margin: 20px 20px;
 }

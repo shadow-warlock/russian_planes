@@ -47,6 +47,10 @@ body {
     margin-bottom: 4rem;
 }
 
+.padding_top_4{
+    padding-top: 4rem;
+}
+
 .text_center{
     text-align: center;
 }

@@ -15,7 +15,7 @@ class StartScreen extends Component {
                 <div className={"start_screen_content"}>
                     <div>
                         <div className={"margin_bottom_4"}>в рамках 23-й <br/> национальной авиационной премии «Крылья
-                            России
+                            России»
                         </div>
                         <div className={"blue header margin_bottom_4"}>Народное голосование.<br/> Выбираем
                             лучшую <br/> авиакомпанию
