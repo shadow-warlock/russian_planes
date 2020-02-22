@@ -7,13 +7,10 @@ class Form extends Component {
     constructor(props) {
         super(props);
         let selected = {};
-        console.log(this.props.fixed);
-        if (this.props.fixed) {
-            console.log(this.props.selected);
-            for (let key in this.props.selected) {
+        if(this.props.selected){
+            for (let key in this.props.selected){
                 selected[key] = this.props.selected[key];
                 selected[key].vote = null;
-                console.log(selected);
             }
         }
         this.state = {
@@ -23,8 +20,8 @@ class Form extends Component {
         this.onVoted = this.onVoted.bind(this);
     }
 
-    onChoose(id, name) {
-        if (!this.props.fixed) {
+    onChoose(id, name){
+        if(!this.props.selected){
             let selected = this.state.selected;
             if (selected[id]) {
                 delete selected[id];
@@ -62,7 +59,7 @@ class Form extends Component {
             <div className={"company_form"}>{
                 companies.map((company, id) => {
                     let stars = "";
-                    let isSelected = this.state.selected[id]
+                    let isSelected = this.state.selected[id];
                     if (isSelected) {
                         stars = <Stars company={isSelected} onVoted={(vote) => {
                             this.onVoted(id, vote)

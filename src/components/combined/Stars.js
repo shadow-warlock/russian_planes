@@ -12,13 +12,12 @@ class Stars extends Component {
         let vote = this.props.company.vote;
         for (let i = 1; i <= 5; i++) {
             stars.push(
-                <div className={"company_star"}>
-                    <Star key={i}
-                          onClick={() => {
-                              this.handler(i)
-                          }}
-                          isActive={vote && i <= vote}/>
-                </div>
+                <Star key={i}
+                      className={"company_star"}
+                      onClick={() => {
+                          this.handler(i)
+                      }}
+                      isActive={vote && i <= vote}/>
             );
         }
         return (

@@ -11,7 +11,9 @@ class VoteScreen extends Component {
                 <div className={"blue"}>{this.props.question}</div>
                 <div>
                     <Form name={this.props.nomination + "_" + this.props.question}
-                          selected={this.props.company}/>
+                          handler={this.props.handler}
+                          companies={this.props.companies}
+                          selected={this.props.selected}/>
                 </div>
             </div>
         );
