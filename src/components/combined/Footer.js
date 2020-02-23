@@ -35,7 +35,7 @@ class Footer extends Component {
                     </div>
                     <div>
                         <div className={"margin_bottom_4"}>Генеральный информационный партнер</div>
-                        <div className={"gen_info_center margin_bottom_4"}>
+                        <div className={"gen_info_center"}>
                             <img src={ATO} alt={"logo"}/>
                         </div>
                     </div>

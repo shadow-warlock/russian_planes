@@ -12,7 +12,7 @@
 }
 
 .stars {
-    padding: 20px;
+    padding: 20px 20px;
 }
 
 .stars:hover {
@@ -28,5 +28,6 @@
 }
 
 .blue.header{
+    padding-top: 0;
     margin-bottom: 1rem;
 }

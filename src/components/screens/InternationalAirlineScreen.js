@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import Button from "../base/Button";
+import "./../../assets/css/screens/InternationalAirlineScreen/international_airline_screen.css";
 
 class InternationalAirlineScreen extends Component {
     render() {
@@ -11,7 +12,7 @@ class InternationalAirlineScreen extends Component {
                 <div className={"text_center margin_bottom_4 padding_top_4"}>Вы пользовались услугами иностранных
                     авиакомпаний в 2019 году ?
                 </div>
-                <div className={"text_center display_flex"}>
+                <div className={"text_center display_flex question_buttons"}>
                     <Button onClick={this.props.handler} className={"bg_white margin_bottom_4"}>Да</Button>
                     <Button onClick={this.props.skipHandler} className={"bg_white margin_bottom_4"}>Нет</Button>
                 </div>

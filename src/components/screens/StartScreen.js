@@ -22,7 +22,7 @@ class StartScreen extends Component {
                             2019
                         </div>
                         <div className={"display_flex margin_bottom_4"}>
-                            <div className={"stars"}>
+                            <div className={"stars header"}>
                                 <FontAwesomeIcon className={"yellow"} icon={faStar}/>
                                 <FontAwesomeIcon className={"yellow"} icon={faStar}/>
                                 <FontAwesomeIcon className={"yellow"} icon={faStar}/>
