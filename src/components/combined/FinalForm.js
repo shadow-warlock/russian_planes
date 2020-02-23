@@ -32,13 +32,14 @@ class FinalForm extends Component {
     }
 
     render() {
+        let disabled = this.state.result === 200 || this.state.result === 403 || this.state.result === WAIT;
         let fields = [];
         for (let key in formHeaders) {
             fields.push(
                 <div key={key} className={"display_flex justify_content_between form_element"}>
                     {formHeaders[key]}
                     <div className={"display_flex"}>
-                        <input onChange={(e) => {
+                        <input disabled={disabled} onChange={(e) => {
                             let newState = {};
                             newState[key] = e.target.value;
                             this.setState(newState);
@@ -78,7 +79,8 @@ class FinalForm extends Component {
             <Fragment>
                 {fields}
                 <label className={"agreement"}>
-                    <input checked={this.state.accept}
+                    <input disabled={disabled}
+                           checked={this.state.accept}
                            onChange={(e) => {
                                this.setState({accept: e.target.checked})
                            }}
@@ -90,6 +92,7 @@ class FinalForm extends Component {
                 <br/>
                 <label className={"agreement"}>
                     <input
+                        disabled={disabled}
                         checked={this.state.confirm18}
                         onChange={(e) => {
                             this.setState({confirm18: e.target.checked})
@@ -98,35 +101,36 @@ class FinalForm extends Component {
                     Я подтверждаю что мне есть 18 лет.
                 </label>
                 <br/>
-                <button disabled={this.state.result === 200 || this.state.result === WAIT}
-                        className={"final_form_button"} onClick={() => {
-                    if (!this.state.accept) {
-                        this.setState({
-                            result: ACCEPT
-                        });
-                        return;
-                    }
-                    if (!this.state.confirm18) {
-                        this.setState({
-                            result: CONFIRM18
-                        });
-                        return;
-                    }
-                    if (this.state.name && this.state.surname && this.state.phone && this.state.email && this.state.city) {
-                        this.setState({
-                            result: WAIT
-                        });
-                        this.props.handler(this.state, formHeaders, (result) => {
-                            this.setState({
-                                result: result
-                            })
-                        });
-                    } else {
-                        this.setState({
-                            result: EMPTY_FIELD
-                        })
-                    }
-                }}>
+                <button disabled={disabled}
+                        className={"final_form_button"}
+                        onClick={() => {
+                            if (!this.state.accept) {
+                                this.setState({
+                                    result: ACCEPT
+                                });
+                                return;
+                            }
+                            if (!this.state.confirm18) {
+                                this.setState({
+                                    result: CONFIRM18
+                                });
+                                return;
+                            }
+                            if (this.state.name && this.state.surname && this.state.phone && this.state.email && this.state.city) {
+                                this.setState({
+                                    result: WAIT
+                                });
+                                this.props.handler(this.state, formHeaders, (result) => {
+                                    this.setState({
+                                        result: result
+                                    })
+                                });
+                            } else {
+                                this.setState({
+                                    result: EMPTY_FIELD
+                                })
+                            }
+                        }}>
                     Участвовать в розыгрыше призов
                 </button>
                 <br/>
