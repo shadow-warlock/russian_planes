@@ -7,8 +7,9 @@ import enCompanies from "./../assets/json/en_companies";
 import questions from "./../assets/json/questions";
 import VoteScreen from "./screens/VoteScreen";
 import SecondScreen from "./screens/SecondScreen";
-import FinallyForm from "./combined/FinallyForm";
+import FinalForm from "./combined/FinalForm";
 import InternationalAirlineScreen from "./screens/InternationalAirlineScreen";
+import FinalFormScreen from "./screens/FinalFormScreen";
 
 export let ALL_STEPS = questions.length * 2;
 export const RU_NOMINATION = "Российская авиакомпания года - лидер пассажирских симпатий";
@@ -72,7 +73,7 @@ class App extends Component {
         screens = screens.concat(this.makeForms(RU, 0));
         screens.push(<InternationalAirlineScreen skipHandler={this.skipHandler} handler={this.screenHandler}/>);
         screens = screens.concat(this.makeForms(EN, 1));
-        screens.push(<FinallyForm handler={this.finallyHandler}/>);
+        screens.push(<FinalFormScreen handler={this.finallyHandler}/>);
         return screens[this.state.step]
     }
 
