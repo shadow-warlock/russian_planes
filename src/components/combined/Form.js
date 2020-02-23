@@ -22,7 +22,7 @@ class Form extends Component {
     onChoose(name) {
         if (!this.props.selected) {
             let selected = this.state.selected;
-            if (selected[name]) {
+            if (selected[name] !== undefined) {
                 delete selected[name];
             } else if (Object.keys(selected).length < 3) {
                 selected[name] = null;
