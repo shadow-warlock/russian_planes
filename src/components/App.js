@@ -70,7 +70,7 @@ class App extends Component {
     }
 
     getScreen() {
-        return <FinalFormScreen handler={this.finallyHandler}/>;
+        // return <FinalFormScreen handler={this.finallyHandler}/>;
         let screens = [
             <StartScreen handler={this.screenHandler}/>,
             <SecondScreen handler={this.screenHandler}/>
