@@ -9,8 +9,7 @@ class Form extends Component {
         let selected = {};
         if (this.props.selected) {
             for (let key in this.props.selected) {
-                selected[key] = this.props.selected[key];
-                selected[key].vote = null;
+                selected[key] = null;
             }
         }
         this.state = {
@@ -20,13 +19,13 @@ class Form extends Component {
         this.onVoted = this.onVoted.bind(this);
     }
 
-    onChoose(id, name) {
+    onChoose(name) {
         if (!this.props.selected) {
             let selected = this.state.selected;
-            if (selected[id]) {
-                delete selected[id];
+            if (selected[name]) {
+                delete selected[name];
             } else if (Object.keys(selected).length < 3) {
-                selected[id] = {id: id, vote: null, name: name};
+                selected[name] = null;
             }
             this.setState({
                 selected: selected
@@ -34,14 +33,14 @@ class Form extends Component {
         }
     }
 
-    onVoted(id, vote) {
+    onVoted(name, vote) {
         let selected = this.state.selected;
-        if (selected[id]) {
-            selected[id].vote = vote
+        if (selected[name] !== undefined) {
+            selected[name] = vote
         }
         let check = Object.keys(selected).length === 3;
         for (let key in selected) {
-            if (!selected[key].vote)
+            if (!selected[key])
                 check = false;
         }
         if (check) {
@@ -57,18 +56,18 @@ class Form extends Component {
         let companies = this.props.companies;
         return (
             <div className={"company_form"}>{
-                companies.map((company, id) => {
+                companies.map((company) => {
                     let stars = "";
-                    let isSelected = this.state.selected[id];
-                    if (isSelected) {
+                    let isSelected = this.state.selected[company];
+                    if (isSelected !== undefined) {
                         stars = <Stars company={isSelected} onVoted={(vote) => {
-                            this.onVoted(id, vote)
+                            this.onVoted(company, vote)
                         }}/>
                     }
                     return (
-                        <div key={id} className={"company_position " + (isSelected ? "company_selected" : "")}
+                        <div key={company} className={"company_position " + (isSelected ? "company_selected" : "")}
                              onClick={() => {
-                                 this.onChoose(id, company);
+                                 this.onChoose(company);
                              }}>
                             <div>
                                 {company}

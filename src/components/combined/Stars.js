@@ -9,7 +9,7 @@ class Stars extends Component {
 
     render() {
         let stars = [];
-        let vote = this.props.company.vote;
+        let vote = this.props.company;
         for (let i = 1; i <= 5; i++) {
             stars.push(
                 <Star key={i}

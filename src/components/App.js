@@ -6,6 +6,9 @@ import ruCompanies from "./../assets/json/ru_companies";
 import enCompanies from "./../assets/json/en_companies";
 import questions from "./../assets/json/questions";
 import VoteScreen from "./screens/VoteScreen";
+import SecondScreen from "./screens/SecondScreen";
+import FinallyForm from "./combined/FinallyForm";
+import InternationalAirlineScreen from "./screens/InternationalAirlineScreen";
 
 export let ALL_STEPS = questions.length * 2;
 export const RU_NOMINATION = "Российская авиакомпания года - лидер пассажирских симпатий";
@@ -31,24 +34,26 @@ class App extends Component {
         super(props);
         this.state = {
             step: 0,
-            data:{}
-    };
-    this.getScreen = this.getScreen.bind(this);
-    this.screenHandler = this.screenHandler.bind(this);
-  }
+            data: {}
+        };
+        this.getScreen = this.getScreen.bind(this);
+        this.screenHandler = this.screenHandler.bind(this);
+        this.finallyHandler = this.finallyHandler.bind(this);
+        this.skipHandler = this.skipHandler.bind(this);
+    }
 
-    makeForms(lang, part){
+    makeForms(lang, part) {
         let forms = [];
-        for(let i=0; i<questions.length; i++){
+        for (let i = 0; i < questions.length; i++) {
             let props = {
-                "key":questions[i],
-                "nomination":NOMINATIONS[lang],
-                "handler":this.screenHandler,
-                "companies":COMPANIES[lang],
-                "question":questions[i],
+                "key": questions[i],
+                "nomination": NOMINATIONS[lang],
+                "handler": this.screenHandler,
+                "companies": COMPANIES[lang],
+                "question": questions[i],
                 "step": questions.length * part + i + 1
             };
-            if(i !== 0){
+            if (i !== 0) {
                 props.selected = this.state.data[makeName(NOMINATIONS[lang], questions[0])]
             }
             forms.push(
@@ -59,38 +64,52 @@ class App extends Component {
         return forms;
     }
 
-  getScreen(){
-
-    let screens = [
-        <StartScreen handler={this.screenHandler}/>,
-        <StartScreen handler={this.screenHandler}/>
-        // <SecondScreen handler={this.screenHandler}/>,
-    ];
-    screens = screens.concat(this.makeForms(RU, 0));
-    screens.push(<StartScreen handler={this.screenHandler}/>);
-    screens = screens.concat(this.makeForms(EN, 1));
-    return screens[this.state.step]
-  }
-
-  screenHandler(name=null, datum=null){
-    let step = this.state.step;
-    let data = this.state.data;
-    if(name && datum){
-      data[name] = datum
+    getScreen() {
+        let screens = [
+            <StartScreen handler={this.screenHandler}/>,
+            <SecondScreen handler={this.screenHandler}/>
+        ];
+        screens = screens.concat(this.makeForms(RU, 0));
+        screens.push(<InternationalAirlineScreen skipHandler={this.skipHandler} handler={this.screenHandler}/>);
+        screens = screens.concat(this.makeForms(EN, 1));
+        screens.push(<FinallyForm handler={this.finallyHandler}/>);
+        return screens[this.state.step]
     }
-    step++;
-    this.setState({
-      step: step,
-      data: data
-    })
-  }
+
+    skipHandler() {
+        let step = this.state.step;
+        step += questions.length + 1;
+        this.setState({
+            step: step
+        })
+    }
+
+    finallyHandler(data, headers) {
+        for(let key in data){
+            console.log(data[key] + " " + headers[key]);
+        }
+        console.log(this.state);
+    }
+
+    screenHandler(name = null, datum = null) {
+        let step = this.state.step;
+        let data = this.state.data;
+        if (name && datum) {
+            data[name] = datum
+        }
+        step++;
+        this.setState({
+            step: step,
+            data: data
+        })
+    }
 
 
     render() {
         return (
             <div>
-              {this.getScreen()}
-              <Footer/>
+                {this.getScreen()}
+                <Footer/>
             </div>
         );
     }

@@ -12,8 +12,8 @@ class InternationalAirlineScreen extends Component {
                     авиакомпаний в 2019 году ?
                 </div>
                 <div className={"text_center display_flex"}>
-                    <Button className={"bg_white margin_bottom_4"}>Да</Button>
-                    <Button className={"bg_white margin_bottom_4"}>Нет</Button>
+                    <Button onClick={this.props.handler} className={"bg_white margin_bottom_4"}>Да</Button>
+                    <Button onClick={this.props.skipHandler} className={"bg_white margin_bottom_4"}>Нет</Button>
                 </div>
             </div>
         );
