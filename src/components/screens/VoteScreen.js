@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import Stepper from "../combined/Stepper";
 import Form from "../combined/Form";
 import "./../../assets/css/screens/VoteScreen/vote_screen.css";
+import {makeName} from "../App";
 
 class VoteScreen extends Component {
     render() {
@@ -11,7 +12,7 @@ class VoteScreen extends Component {
                 <Stepper step={this.props.step}/>
                 <div className={"blue text_center margin_bottom_4 bold"}>{this.props.question}</div>
                 <div className={"margin_bottom_4"}>
-                    <Form name={this.props.nomination + "_" + this.props.question}
+                    <Form name={makeName(this.props.nomination, this.props.question)}
                           handler={this.props.handler}
                           companies={this.props.companies}
                           selected={this.props.selected}/>

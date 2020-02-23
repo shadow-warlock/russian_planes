@@ -3,11 +3,11 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="b9cb23bf-3fa2-4a65-af77-ee6abf7db5aa" name="zakuplab" url="http://fortuna.timeweb.ru">
-        <fileTransfer host="fortuna.timeweb.ru" port="22" accessType="SFTP">
+        <fileTransfer host="fortuna.timeweb.ru" port="21">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
-          <option name="port" value="22" />
+          <option name="port" value="21" />
         </fileTransfer>
       </webServer>
     </option>

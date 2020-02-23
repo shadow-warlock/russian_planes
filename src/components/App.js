@@ -7,9 +7,9 @@ import enCompanies from "./../assets/json/en_companies";
 import questions from "./../assets/json/questions";
 import VoteScreen from "./screens/VoteScreen";
 import SecondScreen from "./screens/SecondScreen";
-import FinalForm from "./combined/FinalForm";
 import InternationalAirlineScreen from "./screens/InternationalAirlineScreen";
 import FinalFormScreen from "./screens/FinalFormScreen";
+import axios from "axios";
 
 export let ALL_STEPS = questions.length * 2;
 export const RU_NOMINATION = "Российская авиакомпания года - лидер пассажирских симпатий";
@@ -25,8 +25,10 @@ export const COMPANIES = {
 export const RU = "ru";
 export const EN = "en";
 
+export const DELIMITER = "NAME_DELIMITER";
+
 export function makeName(nomination, question) {
-    return nomination + "_" + question;
+    return nomination + DELIMITER + question;
 }
 
 class App extends Component {
@@ -41,6 +43,7 @@ class App extends Component {
         this.screenHandler = this.screenHandler.bind(this);
         this.finallyHandler = this.finallyHandler.bind(this);
         this.skipHandler = this.skipHandler.bind(this);
+        this.makeTable = this.makeTable.bind(this);
     }
 
     makeForms(lang, part) {
@@ -55,7 +58,7 @@ class App extends Component {
                 "step": questions.length * part + i + 1
             };
             if (i !== 0) {
-                props.selected = this.state.data[makeName(NOMINATIONS[lang], questions[0])]
+                props.selected = this.state.data[makeName(NOMINATIONS[lang], questions[0])];
             }
             forms.push(
                 <VoteScreen
@@ -86,10 +89,49 @@ class App extends Component {
     }
 
     finallyHandler(data, headers) {
-        for(let key in data){
-            console.log(data[key] + " " + headers[key]);
+        let message = "Данные пользователя:<br>";
+        for (let key in data) {
+            message += headers[key] + ": " + data[key] + "<br>";
         }
-        console.log(this.state);
+        message += this.makeTable(RU);
+        message += this.makeTable(EN);
+        axios.post("/mail.php", {text: message}).then((result) => {
+            console.log("отправлено");
+        });
+
+    }
+
+    makeTable(lang){
+        let message = "";
+        let index = Object.keys(this.state.data).findIndex((item)=>{
+            return item.startsWith(NOMINATIONS[lang]);
+        });
+        if(index !== -1){
+            message += NOMINATIONS[lang] + "<br>";
+            let selectedCompanies = Object.keys(this.state.data[Object.keys(this.state.data)[index]]);
+            message += "<br><br>";
+            message += `<style>table td {border:1px solid black}</style>`;
+            message += "<table>";
+            message += `<thead>`;
+            message += `<th>Вопросы</th>`;
+            selectedCompanies.forEach(item=>{
+                message += `<th>${item}</th>`
+            });
+            message += `</thead>`;
+            for(let key in this.state.data){
+                if(key.startsWith(NOMINATIONS[lang])){
+                    message += `<tr>`;
+                    let question = key.split(DELIMITER)[1];
+                    message += `<td>${question}</td>`;
+                    for(let key2 in this.state.data[key]){
+                        message += `<td>${this.state.data[key][key2]}</td>`;
+                    }
+                    message += `</tr>`;
+                }
+            }
+            message += "</table>";
+        }
+        return message;
     }
 
     screenHandler(name = null, datum = null) {
