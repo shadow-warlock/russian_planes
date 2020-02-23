@@ -17,6 +17,8 @@ $mail->Password = '3W4bDsRn'; // Ваш пароль от почты с кото
 $mail->Port = 25; // TCP port to connect to / этот порт может отличаться у других провайдеров
 $mail->setFrom('survey@xyzz.ru'); // от кого будет уходить письмо?
 $mail->addAddress('nik_mak@bk.ru');     // Кому будет уходить письмо
+$mail->addAddress('timger98@gmail.com');     // Кому будет уходить письмо
+$mail->addAddress('zakaz.aplana@gmail.com');     // Кому будет уходить письмо
 $mail->isHTML(true);                                  // Set email format to HTML
 
 $mail->Subject = 'Результат голосования "Лучшая авиакомпания 2019"';

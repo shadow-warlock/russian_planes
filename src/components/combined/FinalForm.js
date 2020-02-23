@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from "react";
-import Button from "../base/Button";
+import okImage from "./../../assets/img/screens/FinalFormScreen/ok.svg"
+import failImage from "./../../assets/img/screens/FinalFormScreen/fail.svg"
 
 export const formHeaders = {
     name: "Имя",
@@ -8,6 +9,11 @@ export const formHeaders = {
     email: "E-mail",
     city: "Город"
 };
+
+const EMPTY_FIELD = "empty filed";
+const CONFIRM18 = "confirm18";
+const ACCEPT = "accept";
+const WAIT = "wait";
 
 class FinalForm extends Component {
 
@@ -18,13 +24,16 @@ class FinalForm extends Component {
             surname: "",
             phone: "",
             email: "",
-            city: ""
+            city: "",
+            result: null,
+            accept: false,
+            confirm18: false,
         }
     }
 
     render() {
         let fields = [];
-        for (let key in this.state) {
+        for (let key in formHeaders) {
             fields.push(
                 <div key={key} className={"display_flex justify_content_between form_element"}>
                     {formHeaders[key]}
@@ -33,25 +42,93 @@ class FinalForm extends Component {
                         newState[key] = e.target.value;
                         this.setState(newState);
                     }}/>
+                    {this.state[key] ? <img src={okImage} alt={""}/> : <img src={failImage} alt={""}/>}
                 </div>
             );
+        }
+        let message = "";
+        switch (this.state.result) {
+            case null:
+                break;
+            case 200:
+                message = "Спасибо! ваш голос принят!";
+                break;
+            case 403:
+                message = "Вы уже голосовали!";
+                break;
+            case EMPTY_FIELD:
+                message = "Заполните все поля!";
+                break;
+            case WAIT:
+                message = "Обработка...";
+                break;
+            case ACCEPT:
+                message = "Примите условия пользовательского соглашения!";
+                break;
+            case CONFIRM18:
+                message = "Подтвердите, что вам есть 18 лет!";
+                break;
+            default:
+                message = "Произошла ошибка!";
+                break;
         }
         return (
             <Fragment>
                 {fields}
-                <label className={"agreement"}><input type={"checkbox"}/>Я принимаю Условия Пользовательского Соглашения и даю свое согласие
+                <label className={"agreement"}>
+                    <input checked={this.state.accept}
+                           onChange={(e) => {
+                               this.setState({accept: e.target.checked})
+                           }}
+                           type={"checkbox"}/>
+                    Я принимаю Условия Пользовательского Соглашения и даю свое согласие
                     ATO.RU на обработку моей персональной информации на условиях определенных Политикой
-                    конфиденциальности.</label>
+                    конфиденциальности.
+                </label>
                 <br/>
-                <label className={"agreement"}><input type={"checkbox"}/>Я подтверждаю что мне есть 18 лет.</label>
+                <label className={"agreement"}>
+                    <input
+                        checked={this.state.confirm18}
+                        onChange={(e) => {
+                            this.setState({confirm18: e.target.checked})
+                        }}
+                        type={"checkbox"}/>
+                    Я подтверждаю что мне есть 18 лет.
+                </label>
                 <br/>
-                <button className={"final_form_button"} onClick={() => {
+                <button disabled={this.state.result === 200 || this.state.result === WAIT}
+                        className={"final_form_button"} onClick={() => {
+                    if(!this.state.accept){
+                        this.setState({
+                            result: ACCEPT
+                        });
+                        return;
+                    }
+                    if(!this.state.confirm18){
+                        this.setState({
+                            result: CONFIRM18
+                        });
+                        return;
+                    }
                     if (this.state.name && this.state.surname && this.state.phone && this.state.email && this.state.city) {
-                        this.props.handler(this.state, formHeaders);
+                        this.setState({
+                            result: WAIT
+                        });
+                        this.props.handler(this.state, formHeaders, (result) => {
+                            this.setState({
+                                result: result
+                            })
+                        });
+                    } else {
+                        this.setState({
+                            result: EMPTY_FIELD
+                        })
                     }
                 }}>
                     Участвовать в розыгрыше призов
                 </button>
+                <br/>
+                {message}
             </Fragment>
         );
     }

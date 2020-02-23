@@ -70,6 +70,7 @@ class App extends Component {
     }
 
     getScreen() {
+        return <FinalFormScreen handler={this.finallyHandler}/>;
         let screens = [
             <StartScreen handler={this.screenHandler}/>,
             <SecondScreen handler={this.screenHandler}/>
@@ -89,15 +90,17 @@ class App extends Component {
         })
     }
 
-    finallyHandler(data, headers) {
+    finallyHandler(data, headers, callback) {
         let message = "Данные пользователя:<br>";
         for (let key in data) {
             message += headers[key] + ": " + data[key] + "<br>";
         }
         message += this.makeTable(RU);
         message += this.makeTable(EN);
-        axios.post("/mail.php", {text: message}).then((result) => {
-            console.log("отправлено");
+        axios.post("http://survey.xyzz.ru/mail.php", {text: message}).then((result) => {
+            callback(200);
+        }).catch((error)=>{
+            callback(error.request.status);
         });
 
     }
@@ -108,7 +111,7 @@ class App extends Component {
             return item.startsWith(NOMINATIONS[lang]);
         });
         if(index !== -1){
-            message += NOMINATIONS[lang] + "<br>";
+            message += "<br><br>" + NOMINATIONS[lang] + "<br>";
             let selectedCompanies = Object.keys(this.state.data[Object.keys(this.state.data)[index]]);
             message += "<br><br>";
             message += `<style>table td {border:1px solid black}</style>`;
