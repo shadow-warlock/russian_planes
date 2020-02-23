@@ -25,7 +25,7 @@ class Footer extends Component {
         return (
             <div className={"footer default_padding"}>
                 <div className={"display_flex justify_content_between"}>
-                    <div className={"margin_bottom_4"}>
+                    <div>
                         <div className={"margin_bottom_4"}>Учредители</div>
                         <div className={"display_flex justify_content_between founders"}>
                             <img src={LAVT} alt={"logo"}/>

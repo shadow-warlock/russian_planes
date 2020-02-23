@@ -1,8 +1,13 @@
 .second_screen{
-    padding-top: 100px;
+    min-height: 100vh;
+    /*padding-top: 100px;*/
     background-image: url("../../../img/screens/SecondScreen/like.svg");
     background-position-x: left;
     background-position-y: bottom;
     background-size: 15%;
     background-repeat: no-repeat;
+}
+
+.second_screen header{
+    padding-top: 100px;
 }
