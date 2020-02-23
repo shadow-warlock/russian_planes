@@ -61,7 +61,7 @@
 
     .company_form {
         margin: 0 !important;
-        max-width: none!important;
+        max-width: none !important;
     }
 
     .company_form .company_position {
@@ -78,14 +78,15 @@
 
     .form_element input {
         width: 100% !important;
-        padding-right: 0!important;
+        padding-right: 0 !important;
     }
 
-    .form_element .display_flex{
+    .form_element .display_flex {
         flex-wrap: nowrap;
     }
 
-    .form_element{
-        padding-right: 0!important;
+    .form_element {
+        padding-right: 0 !important;
+        display: block !important;
     }
 }

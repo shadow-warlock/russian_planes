@@ -130,7 +130,7 @@ class FinalForm extends Component {
                     Участвовать в розыгрыше призов
                 </button>
                 <br/>
-                {message}
+                <div className={"result_message"}>{message}</div>
             </Fragment>
         );
     }

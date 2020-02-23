@@ -54,3 +54,10 @@
 .final_form_button:hover {
     filter: brightness(90%);
 }
+
+.result_message {
+    font-weight: normal;
+    margin-top: 1rem;
+    color: red;
+    font-size: 16px;
+}
