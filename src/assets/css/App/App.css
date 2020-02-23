@@ -24,11 +24,11 @@ body {
     color: #ffc107;
 }
 
-.bg_yellow{
+.bg_yellow {
     background-color: #ffc107;
 }
 
-.bg_white{
+.bg_white {
     background-color: white;
 }
 
@@ -36,27 +36,27 @@ body {
     display: flex;
 }
 
-.justify_content_between{
+.justify_content_between {
     justify-content: space-between;
 }
 
-.little_text{
+.little_text {
     font-size: 12px;
 }
 
-.margin_bottom_4{
+.margin_bottom_4 {
     margin-bottom: 3rem;
     padding-top: 2rem;
 }
 
-.padding_top_4{
+.padding_top_4 {
     padding-top: 3rem;
 }
 
-.text_center{
+.text_center {
     text-align: center;
 }
 
-.bold{
+.bold {
     font-weight: bold;
 }
