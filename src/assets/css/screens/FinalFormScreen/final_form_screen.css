@@ -55,6 +55,10 @@
     filter: brightness(90%);
 }
 
+.final_form_button[disabled] {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
 .result_message {
     font-weight: normal;
     margin-top: 1rem;
