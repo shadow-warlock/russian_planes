@@ -6,7 +6,7 @@
     margin: 5px;
 }
 
-.company_position:hover{
+.company_position:hover {
     color: black;
     cursor: pointer;
 }
@@ -20,20 +20,30 @@
 }
 
 .company_form .company_position {
-    width: 45%;
+    width: 35%;
 }
 
-.company_selected{
+.company_selected {
     border-radius: 20px;
-    border-color: rgba(0,0,0,0.2);
+    border-color: rgba(0, 0, 0, 0.2);
     border-style: solid;
+    border-width: 1px;
     color: black;
 }
 
-.company_star:hover{
+.company_star {
+    padding: 5px;
+}
+
+.company_star:hover {
     color: #ffc107;
 }
 
-.company_star:hover{
+.company_star:hover ~ .company_star {
+    color: black;
+}
+
+.company_stars:hover {
     color: #ffc107;
 }
+

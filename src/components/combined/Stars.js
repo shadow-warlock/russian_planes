@@ -22,7 +22,7 @@ class Stars extends Component {
             );
         }
         return (
-            <div className={"display_flex"}>
+            <div className={"display_flex company_stars"}>
                 {stars}
             </div>
         );
