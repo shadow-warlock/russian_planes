@@ -21,7 +21,7 @@
 }
 
 .company_form .company_position {
-    white-space: nowrap;
+    /*white-space: nowrap;*/
     width: 40%;
 }
 
