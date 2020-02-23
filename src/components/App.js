@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import '../assets/css/App/App.css';
+import '../assets/css/App/mobile.css';
 import StartScreen from "./screens/StartScreen";
 import Footer from "./combined/Footer";
 import ruCompanies from "./../assets/json/ru_companies";
@@ -7,7 +8,6 @@ import enCompanies from "./../assets/json/en_companies";
 import questions from "./../assets/json/questions";
 import VoteScreen from "./screens/VoteScreen";
 import SecondScreen from "./screens/SecondScreen";
-import FinalForm from "./combined/FinalForm";
 import InternationalAirlineScreen from "./screens/InternationalAirlineScreen";
 import FinalFormScreen from "./screens/FinalFormScreen";
 

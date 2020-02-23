@@ -1,0 +1,82 @@
+@media (max-width: 1080px) {
+    .default_padding {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .margin_bottom_4 {
+        margin-bottom: 1rem;
+        padding-top: 1rem;
+    }
+
+    .start_screen {
+        background-image: none !important;
+        min-height: auto !important;
+    }
+
+    .header {
+        font-size: 30px;
+    }
+
+    body {
+        font-size: 16px;
+    }
+
+    .display_flex {
+        flex-wrap: wrap;
+    }
+
+    .start_screen_content > div {
+        max-width: none !important;
+    }
+
+    .stars {
+        margin: auto;
+    }
+
+    .button {
+        width: 100%
+    }
+
+    .information_partners {
+        width: auto !important;
+        margin: auto !important;
+    }
+
+    .information_partners > div {
+        width: 40% !important;
+    }
+
+    .second_screen {
+        background-image: none !important;
+    }
+
+    .progressbar {
+        display: none;
+    }
+
+    .company_stars {
+        flex-wrap: nowrap;
+    }
+
+    .company_form {
+        margin: 0 !important;
+        max-width: none!important;
+    }
+
+    .company_form .company_position {
+        width: 100% !important;
+    }
+
+    .second_screen .header {
+        padding-top: 50px !important;
+    }
+
+    .women_with_case {
+        background-image: none !important;
+    }
+
+    .form_element input {
+        width: 100% !important;
+    }
+}
