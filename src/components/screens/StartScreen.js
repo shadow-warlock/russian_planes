@@ -28,7 +28,7 @@ class StartScreen extends Component {
                                 <FontAwesomeIcon className={"yellow"} icon={faStar}/>
                                 <FontAwesomeIcon icon={faStar}/>
                             </div>
-                            <Button className={"bg_yellow"} onClick={this.props.handler}>Проголосуй <br/>и выиграй приз*</Button>
+                            <Button className={"bg_yellow blinking"} onClick={this.props.handler}>Проголосуй <br/>и выиграй приз*</Button>
                         </div>
                         <div className={"little_text"}>*Участвовать в розыгрыше призов могут только лица, достигшие
                             18-ти летнего возраста

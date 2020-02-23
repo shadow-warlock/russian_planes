@@ -65,3 +65,7 @@
     color: red;
     font-size: 16px;
 }
+
+.agreement > div {
+    max-width: 90%;
+}

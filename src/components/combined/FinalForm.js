@@ -83,9 +83,9 @@ class FinalForm extends Component {
                                this.setState({accept: e.target.checked})
                            }}
                            type={"checkbox"}/>
-                    Я принимаю Условия Пользовательского Соглашения и даю свое согласие
-                    ATO.RU на обработку моей персональной информации на условиях определенных Политикой
-                    конфиденциальности.
+                    <div>Я принимаю Условия Пользовательского Соглашения и даю свое согласие
+                        ATO.RU на обработку моей персональной информации на условиях определенных Политикой
+                        конфиденциальности.</div>
                 </label>
                 <br/>
                 <label className={"agreement"}>
@@ -95,7 +95,7 @@ class FinalForm extends Component {
                             this.setState({confirm18: e.target.checked})
                         }}
                         type={"checkbox"}/>
-                    Я подтверждаю что мне есть 18 лет.
+                    <div>Я подтверждаю что мне есть 18 лет.</div>
                 </label>
                 <br/>
                 <button disabled={this.state.result === 200 || this.state.result === WAIT}
