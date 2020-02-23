@@ -37,12 +37,14 @@ class FinalForm extends Component {
             fields.push(
                 <div key={key} className={"display_flex justify_content_between form_element"}>
                     {formHeaders[key]}
-                    <input onChange={(e) => {
-                        let newState = {};
-                        newState[key] = e.target.value;
-                        this.setState(newState);
-                    }}/>
-                    {this.state[key] ? <img src={okImage} alt={""}/> : <img src={failImage} alt={""}/>}
+                    <div className={"display_flex"}>
+                        <input onChange={(e) => {
+                            let newState = {};
+                            newState[key] = e.target.value;
+                            this.setState(newState);
+                        }}/>
+                        {this.state[key] ? <img src={okImage} alt={""}/> : <img src={failImage} alt={""}/>}
+                    </div>
                 </div>
             );
         }
@@ -98,13 +100,13 @@ class FinalForm extends Component {
                 <br/>
                 <button disabled={this.state.result === 200 || this.state.result === WAIT}
                         className={"final_form_button"} onClick={() => {
-                    if(!this.state.accept){
+                    if (!this.state.accept) {
                         this.setState({
                             result: ACCEPT
                         });
                         return;
                     }
-                    if(!this.state.confirm18){
+                    if (!this.state.confirm18) {
                         this.setState({
                             result: CONFIRM18
                         });
