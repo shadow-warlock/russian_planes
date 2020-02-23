@@ -38,6 +38,7 @@ class App extends Component {
         super(props);
         this.state = {
             step: 0,
+            blink: false,
             data: {}
         };
         this.getScreen = this.getScreen.bind(this);
@@ -139,22 +140,33 @@ class App extends Component {
     }
 
     screenHandler(name = null, datum = null) {
+        window.scrollTo(0, 0);
         let step = this.state.step;
-        let data = this.state.data;
-        if (name && datum) {
-            data[name] = datum
-        }
         step++;
-        this.setState({
-            step: step,
-            data: data
-        })
+        if (name && datum) {
+            let data = this.state.data;
+            data[name] = datum;
+            this.setState({
+                data: data,
+                blink: true
+            });
+            setTimeout(()=>{
+                this.setState({
+                    blink: false,
+                    step: step
+                });
+            }, 100);
+        }else{
+            this.setState({
+                step: step
+            });
+        }
     }
 
 
     render() {
         return (
-            <div>
+            <div className={this.state.blink ? "bg_yellow" : ""}>
                 {this.getScreen()}
                 <Footer/>
             </div>
