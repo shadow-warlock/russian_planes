@@ -5,7 +5,7 @@
 .footer {
     color: rgba(65, 60, 52, 0.4);
     font-weight: bold;
-    min-height: 100vh;
+    /*min-height: 100vh;*/
 }
 
 .information_partners {
