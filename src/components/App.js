@@ -3,26 +3,50 @@ import '../assets/css/App/App.css';
 import '../assets/css/App/mobile.css';
 import StartScreen from "./screens/StartScreen";
 import Footer from "./combined/Footer";
-import ruCompanies from "./../assets/json/ru_companies";
-import enCompanies from "./../assets/json/en_companies";
-import questions from "./../assets/json/questions";
+import ruCompaniesUrl from "./../assets/json/ru_companies";
+import enCompaniesUrl from "./../assets/json/en_companies";
+import questionsUrl from "./../assets/json/questions";
 import VoteScreen from "./screens/VoteScreen";
 import SecondScreen from "./screens/SecondScreen";
 import InternationalAirlineScreen from "./screens/InternationalAirlineScreen";
 import FinalFormScreen from "./screens/FinalFormScreen";
 import axios from "axios";
 
-export let ALL_STEPS = questions.length * 2;
+export let ALL_STEPS = 0;
 export const RU_NOMINATION = "Российская авиакомпания года - лидер пассажирских симпатий";
 export const EN_NOMINATION = "Зарубежная авиакомпания года - лидер пассажирских симпатий";
 export const NOMINATIONS = {
     "ru": RU_NOMINATION,
     "en": EN_NOMINATION
 };
-export const COMPANIES = {
-    "ru": ruCompanies,
-    "en": enCompanies
+export let COMPANIES = {
+    "ru": [],
+    "en": []
 };
+
+export let questions = [];
+fetch(questionsUrl)
+    .then(response => response.json())
+    .then(data => {
+        questions = data;
+        ALL_STEPS = questions.length * 2;
+    });
+export let ruCompanies = [];
+fetch(ruCompaniesUrl)
+    .then(response => response.json())
+    .then(data => {
+        ruCompanies = data;
+        COMPANIES[RU] = ruCompanies;
+    });
+export let enCompanies = [];
+fetch(enCompaniesUrl)
+    .then(response => response.json())
+    .then(data => {
+        enCompanies = data;
+        COMPANIES[EN] = enCompanies;
+    });
+
+
 export const RU = "ru";
 export const EN = "en";
 
@@ -71,7 +95,6 @@ class App extends Component {
     }
 
     getScreen() {
-        // return <FinalFormScreen handler={this.finallyHandler}/>;
         let screens = [
             <StartScreen handler={this.screenHandler}/>,
             <SecondScreen handler={this.screenHandler}/>
@@ -100,18 +123,18 @@ class App extends Component {
         message += this.makeTable(EN);
         axios.post("http://survey.xyzz.ru/mail.php", {text: message}).then((result) => {
             callback(200);
-        }).catch((error)=>{
+        }).catch((error) => {
             callback(error.request.status);
         });
 
     }
 
-    makeTable(lang){
+    makeTable(lang) {
         let message = "";
-        let index = Object.keys(this.state.data).findIndex((item)=>{
+        let index = Object.keys(this.state.data).findIndex((item) => {
             return item.startsWith(NOMINATIONS[lang]);
         });
-        if(index !== -1){
+        if (index !== -1) {
             message += "<br><br>" + NOMINATIONS[lang] + "<br>";
             let selectedCompanies = Object.keys(this.state.data[Object.keys(this.state.data)[index]]);
             message += "<br><br>";
@@ -119,16 +142,16 @@ class App extends Component {
             message += "<table>";
             message += `<thead>`;
             message += `<th>Вопросы</th>`;
-            selectedCompanies.forEach(item=>{
+            selectedCompanies.forEach(item => {
                 message += `<th>${item}</th>`
             });
             message += `</thead>`;
-            for(let key in this.state.data){
-                if(key.startsWith(NOMINATIONS[lang])){
+            for (let key in this.state.data) {
+                if (key.startsWith(NOMINATIONS[lang])) {
                     message += `<tr>`;
                     let question = key.split(DELIMITER)[1];
                     message += `<td>${question}</td>`;
-                    for(let key2 in this.state.data[key]){
+                    for (let key2 in this.state.data[key]) {
                         message += `<td>${this.state.data[key][key2]}</td>`;
                     }
                     message += `</tr>`;
@@ -150,13 +173,13 @@ class App extends Component {
                 data: data,
                 blink: true
             });
-            setTimeout(()=>{
+            setTimeout(() => {
                 this.setState({
                     blink: false,
                     step: step
                 });
             }, 100);
-        }else{
+        } else {
             this.setState({
                 step: step
             });
