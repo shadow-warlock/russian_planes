@@ -10,8 +10,12 @@ $mail = new PHPMailer;
 $mail->CharSet = 'utf-8';
 
 $text = json_decode(file_get_contents('php://input'), true);
-$text = $text['text'] ? $text['text'] : "text";
-
+if(isset($text["text"])){
+    $text = $text["text"];
+}else{
+    http_response_code(400);
+    exit(400);
+}
 
 $mail->isSMTP();                                      // Set mailer to use SMTP
 $mail->Host = 'smtp.timeweb.ru';  																							// Specify main and backup SMTP servers
