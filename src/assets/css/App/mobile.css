@@ -39,12 +39,21 @@
     }
 
     .information_partners {
+        text-align: center;
         width: auto !important;
         margin: auto !important;
     }
 
+    .founders {
+        text-align: center;
+    }
+
+    .gen_info_center > img {
+        height: 35px!important;
+    }
+
     .information_partners > div {
-        width: 35% !important;
+        width: 100% !important;
     }
 
     .second_screen {
