@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from "react";
 import okImage from "./../../assets/img/screens/FinalFormScreen/ok.svg"
 import failImage from "./../../assets/img/screens/FinalFormScreen/fail.svg"
+import ym from 'react-yandex-metrika';
 
 export const formHeaders = {
     name: "Имя",
@@ -121,6 +122,9 @@ class FinalForm extends Component {
                                     result: WAIT
                                 });
                                 this.props.handler(this.state, formHeaders, (result) => {
+                                    if(result === 200){
+                                        ym('reachGoal', 'form');
+                                    }
                                     this.setState({
                                         result: result
                                     })

@@ -11,6 +11,7 @@ import SecondScreen from "./screens/SecondScreen";
 import InternationalAirlineScreen from "./screens/InternationalAirlineScreen";
 import FinalFormScreen from "./screens/FinalFormScreen";
 import axios from "axios";
+import { YMInitializer } from 'react-yandex-metrika';
 
 export let ALL_STEPS = 0;
 export const RU_NOMINATION = "Российская авиакомпания года - лидер пассажирских симпатий";
@@ -121,7 +122,7 @@ class App extends Component {
         }
         message += this.makeTable(RU);
         message += this.makeTable(EN);
-        axios.post("http://survey.xyzz.ru/mail.php", {text: message}).then((result) => {
+        axios.post("/mail.php", {text: message}).then((result) => {
             callback(200);
         }).catch((error) => {
             callback(error.request.status);
@@ -190,6 +191,7 @@ class App extends Component {
     render() {
         return (
             <div className={this.state.blink ? "bg_yellow" : ""}>
+                <YMInitializer accounts={[57672736]} />
                 {this.getScreen()}
                 <Footer/>
             </div>

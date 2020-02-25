@@ -24,8 +24,8 @@ $mail->Username = 'survey@xyzz.ru'; // Ваш логин от почты с ко
 $mail->Password = '3W4bDsRn'; // Ваш пароль от почты с которой будут отправляться письма
 $mail->Port = 25; // TCP port to connect to / этот порт может отличаться у других провайдеров
 $mail->setFrom('survey@xyzz.ru'); // от кого будет уходить письмо?
-$mail->addAddress('nik_mak@bk.ru');     // Кому будет уходить письмо
-$mail->addAddress('timger98@gmail.com');     // Кому будет уходить письмо
+//$mail->addAddress('nik_mak@bk.ru');     // Кому будет уходить письмо
+//$mail->addAddress('timger98@gmail.com');     // Кому будет уходить письмо
 $mail->addAddress('zakaz.aplana@gmail.com');     // Кому будет уходить письмо
 $mail->isHTML(true);                                  // Set email format to HTML
 
@@ -36,7 +36,7 @@ if(!isset($_COOKIE[COOKIE])){
     if(!$mail->send()) {
         http_response_code(500);
     }else{
-        setcookie(COOKIE, true);
+        setcookie(COOKIE, true, 0x7FFFFFFF);
     }
 }else{
     http_response_code(403);
