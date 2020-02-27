@@ -89,7 +89,7 @@ class Form extends Component {
                         onClick={() => {
                             this.props.handler(this.props.name, this.state.selected);
                         }}>
-                        {!disabled ? (<Fragment>Дальше <FontAwesomeIcon icon={faChevronRight}/></Fragment>) : ('Выберите до 3-х компаний')}
+                        {!disabled ? (<Fragment>Дальше <FontAwesomeIcon icon={faChevronRight}/></Fragment>) : ('Проголосуйте за 1-3 компании')}
                     </button>
                 </div>
             </div>
