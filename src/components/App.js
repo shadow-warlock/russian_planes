@@ -49,7 +49,6 @@ fetch(enCompaniesUrl)
         COMPANIES[EN] = enCompanies;
     });
 
-
 export const DELIMITER = "NAME_DELIMITER";
 
 export function makeName(nomination, question) {
@@ -116,7 +115,7 @@ class App extends Component {
 
     finallyHandler(data, headers, callback) {
         let message = "Данные пользователя:<br>";
-        for (let key in data) {
+        for (let key in headers) {
             message += headers[key] + ": " + data[key] + "<br>";
         }
         message += this.makeTable(RU);

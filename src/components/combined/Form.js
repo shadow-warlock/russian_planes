@@ -40,12 +40,10 @@ class Form extends Component {
         if (selected[name] !== undefined) {
             selected[name] = vote
         }
-        let check = Object.keys(selected).length === 3;
-        for (let key in selected) {
-            if (!selected[key])
-                check = false;
-        }
-        if (check) {
+        let check = Object.values(selected).every((item) => {
+            return item
+        });
+        if (this.props.selected && check && Object.keys(selected).length === Object.keys(this.props.selected).length) {
             this.props.handler(this.props.name, this.state.selected);
             return;
         }
@@ -81,10 +79,13 @@ class Form extends Component {
                     })
                 }
                 </div>
-                <div className={"text_center button_next_div"}>{this.props.selected ? "" :
-                    <button disabled={true} className={"button bg_yellow"}>
+                <div className={"text_center button_next_div"}>
+                    <button
+                        className={"button bg_yellow"}
+                        disabled={this.props.selected || Object.values(this.state.selected).length === 0 || !Object.values(this.state.selected).every((item)=>{return item})}
+                        onClick={() => {this.props.handler(this.props.name, this.state.selected);}}>
                         Дальше <FontAwesomeIcon icon={faChevronRight}/>
-                    </button>}
+                    </button>
                 </div>
             </div>
         );
