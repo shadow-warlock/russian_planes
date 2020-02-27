@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import Stars from "./Stars";
 import "./../../assets/css/combined/Form/form.css";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faChevronRight} from "@fortawesome/free-solid-svg-icons";
 
 class Form extends Component {
 
@@ -55,29 +57,35 @@ class Form extends Component {
     render() {
         let companies = this.props.companies;
         return (
-            <div className={"company_form"}>{
-                companies.map((company) => {
-                    let stars = "";
-                    let isSelected = this.state.selected[company];
-                    if (isSelected !== undefined) {
-                        stars = <Stars company={isSelected} onVoted={(vote) => {
-                            this.onVoted(company, vote)
-                        }}/>
-                    }
-                    return (
-                        <div key={company} className={"company_position " + (isSelected ? "company_selected" : "")}
-                             onClick={() => {
-                                 this.onChoose(company);
-                             }}>
-                            <div>
-                                {company}
+            <div>
+                <div className={"company_form"}>{
+                    companies.map((company) => {
+                        let stars = "";
+                        let isSelected = this.state.selected[company];
+                        if (isSelected !== undefined) {
+                            stars = <Stars company={isSelected} onVoted={(vote) => {
+                                this.onVoted(company, vote)
+                            }}/>
+                        }
+                        return (
+                            <div key={company} className={"company_position " + (isSelected ? "company_selected" : "")}
+                                 onClick={() => {
+                                     this.onChoose(company);
+                                 }}>
+                                <div>
+                                    {company}
+                                </div>
+                                <div>{stars}</div>
                             </div>
-                            <div>{stars}</div>
-                        </div>
-                    )
-                })
-            }
-                {this.props.selected ? "" : <button>кнопка</button>}
+                        )
+                    })
+                }
+                </div>
+                <div className={"text_center button_next_div"}>{this.props.selected ? "" :
+                    <button disabled={true} className={"button bg_yellow"}>
+                        Дальше <FontAwesomeIcon icon={faChevronRight}/>
+                    </button>}
+                </div>
             </div>
         );
     }

@@ -13,6 +13,8 @@ import FinalFormScreen from "./screens/FinalFormScreen";
 import axios from "axios";
 import { YMInitializer } from 'react-yandex-metrika';
 
+export const RU = "ru";
+export const EN = "en";
 export let ALL_STEPS = 0;
 export const RU_NOMINATION = "Российская авиакомпания года - лидер пассажирских симпатий";
 export const EN_NOMINATION = "Зарубежная авиакомпания года - лидер пассажирских симпатий";
@@ -47,9 +49,6 @@ fetch(enCompaniesUrl)
         COMPANIES[EN] = enCompanies;
     });
 
-
-export const RU = "ru";
-export const EN = "en";
 
 export const DELIMITER = "NAME_DELIMITER";
 

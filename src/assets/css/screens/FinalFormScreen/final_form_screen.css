@@ -55,7 +55,7 @@
     filter: brightness(90%);
 }
 
-.final_form_button[disabled] {
+button[disabled] {
     background-color: rgba(0, 0, 0, 0.1);
 }
 

@@ -49,3 +49,8 @@
     color: #ffc107;
 }
 
+.button_next_div > button{
+    font-size: 16px;
+    padding: 10px;
+}
+
