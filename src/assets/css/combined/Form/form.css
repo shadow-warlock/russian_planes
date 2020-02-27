@@ -54,3 +54,7 @@
     padding: 10px;
 }
 
+.button_next_div > button > svg{
+    vertical-align: text-top;
+}
+

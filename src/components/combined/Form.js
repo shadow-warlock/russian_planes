@@ -54,6 +54,9 @@ class Form extends Component {
 
     render() {
         let companies = this.props.companies;
+        let disabled = this.props.selected || Object.values(this.state.selected).length === 0 || !Object.values(this.state.selected).every((item) => {
+            return item
+        });
         return (
             <div>
                 <div className={"company_form"}>{
@@ -82,9 +85,11 @@ class Form extends Component {
                 <div className={"text_center button_next_div"}>
                     <button
                         className={"button bg_yellow"}
-                        disabled={this.props.selected || Object.values(this.state.selected).length === 0 || !Object.values(this.state.selected).every((item)=>{return item})}
-                        onClick={() => {this.props.handler(this.props.name, this.state.selected);}}>
-                        Дальше <FontAwesomeIcon icon={faChevronRight}/>
+                        disabled={disabled}
+                        onClick={() => {
+                            this.props.handler(this.props.name, this.state.selected);
+                        }}>
+                        {!disabled ? ('Дальше'+ <FontAwesomeIcon icon={faChevronRight}/>) : ('Выберите до 3-х компаний')}
                     </button>
                 </div>
             </div>
