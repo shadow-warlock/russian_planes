@@ -76,7 +76,9 @@ class Form extends Component {
                         </div>
                     )
                 })
-            }</div>
+            }
+                {this.props.selected ? "" : <button>кнопка</button>}
+            </div>
         );
     }
 }
