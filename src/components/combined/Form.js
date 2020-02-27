@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {Component, Fragment} from "react";
 import Stars from "./Stars";
 import "./../../assets/css/combined/Form/form.css";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -89,7 +89,7 @@ class Form extends Component {
                         onClick={() => {
                             this.props.handler(this.props.name, this.state.selected);
                         }}>
-                        {!disabled ? ('Дальше'+ <FontAwesomeIcon icon={faChevronRight}/>) : ('Выберите до 3-х компаний')}
+                        {!disabled ? (<Fragment>Дальше <FontAwesomeIcon icon={faChevronRight}/></Fragment>) : ('Выберите до 3-х компаний')}
                     </button>
                 </div>
             </div>
