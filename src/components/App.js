@@ -3,9 +3,6 @@ import '../assets/css/App/App.css';
 import '../assets/css/App/mobile.css';
 import StartScreen from "./screens/StartScreen";
 import Footer from "./combined/Footer";
-import ruCompaniesUrl from "./../assets/json/ru_companies";
-import enCompaniesUrl from "./../assets/json/en_companies";
-import questionsUrl from "./../assets/json/questions";
 import VoteScreen from "./screens/VoteScreen";
 import SecondScreen from "./screens/SecondScreen";
 import InternationalAirlineScreen from "./screens/InternationalAirlineScreen";
@@ -28,21 +25,21 @@ export let COMPANIES = {
 };
 
 export let questions = [];
-fetch(questionsUrl)
+fetch('/json/questions.json')
     .then(response => response.json())
     .then(data => {
         questions = data;
         ALL_STEPS = questions.length * 2;
     });
 export let ruCompanies = [];
-fetch(ruCompaniesUrl)
+fetch('/json/ru_companies.json')
     .then(response => response.json())
     .then(data => {
         ruCompanies = data;
         COMPANIES[RU] = ruCompanies;
     });
 export let enCompanies = [];
-fetch(enCompaniesUrl)
+fetch('/json/en_companies.json')
     .then(response => response.json())
     .then(data => {
         enCompanies = data;
